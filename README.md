@@ -19,3 +19,6 @@ upcoming features:
 Full video demo coming soon, once game is updated with new features!
 <br /><br />
 ![](https://github.com/shuttlecodes/tetris-single-player/blob/master/demo.gif)
+
+<br /><br />
+Based on tutorial by Programming With Nick on youtube
