@@ -13,5 +13,6 @@ upcoming features:
 - hold: when clicking the s key, hold a block for later retrieval
 - spacebar down: when clicking the spacebar, move the current block all the way down
 
-# video demo
-Coming soon!
+# demo
+
+Full video demo coming soon, once game is updated with new features!
