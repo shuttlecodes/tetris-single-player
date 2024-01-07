@@ -53,12 +53,15 @@ int main()
         Vector2 scoreTextSize = MeasureTextEx(font, scoreText, 30, 2);
         DrawTextEx(font, scoreText, {330 + (150 - scoreTextSize.x)/2, 105}, 30, 2, WHITE);
 
-        DrawTextEx(font, "Next", {330, 205}, 30, 2, WHITE);
-        DrawRectangleRounded({330, 245, 150, 180}, 0.1, 6, lightBlue);
+        DrawTextEx(font, "Next", {330, 165}, 30, 2, WHITE);
+        DrawRectangleRounded({330, 205, 150, 150}, 0.1, 6, lightBlue);
+
+        DrawTextEx(font, "Hold", {330, 365}, 30, 2, WHITE);
+        DrawRectangleRounded({330, 405, 150, 150}, 0.1, 6, lightBlue);
 
         if(game.gameOver)
         {
-            DrawTextEx(font, "WOMP WOMP", {330, 470}, 30, 2, WHITE);
+            DrawTextEx(font, "WOMP WOMP", {330, 565}, 30, 2, WHITE);
         }
 
         game.Draw();

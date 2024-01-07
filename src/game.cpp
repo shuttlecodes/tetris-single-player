@@ -9,6 +9,7 @@ Game::Game()
     blocks = GetAllBlocks();
     currentBlock = GetRandomBlock();
     nextBlock = GetRandomBlock();
+    // heldBlock = GetRandomBlock();
     gameOver = false;
     score = 0;
     InitAudioDevice(); //sets up audio system
@@ -49,15 +50,27 @@ void Game::Draw()
     currentBlock.Draw(11, 11);
     switch(nextBlock.id){
         case 3: //I block
-            nextBlock.Draw(255, 320);
+            nextBlock.Draw(255, 265);
             break;
         case 4: //O block
-            nextBlock.Draw(255, 310);
+            nextBlock.Draw(255, 255);
             break;
         default:
-            nextBlock.Draw(270, 300);
+            nextBlock.Draw(270, 245);
             break;
     }
+    // heldBlock.Draw(270, 350);
+    // switch(heldBlock.id){
+    //     case 3: //I block
+    //         heldBlock.Draw(255, 465);
+    //         break;
+    //     case 4: //O block
+    //         heldBlock.Draw(255, 455);
+    //         break;
+    //     default:
+    //         heldBlock.Draw(270, 445);
+    //         break;
+    // }
 }
 
 void Game::HandleInput()
@@ -83,6 +96,9 @@ void Game::HandleInput()
     case KEY_UP:
         RotateBlock();
         break;
+    // case KEY_C:
+    //     HoldBlock(heldBlock);
+    //     break;
     }
 }
 
@@ -184,17 +200,6 @@ bool Game::BlockFits()
     return true;
 }
 
-void Game::Reset()
-{
-    grid.Initialize(); //this method clears and resets all cells to 0
-    blocks = GetAllBlocks();
-    currentBlock = GetRandomBlock();
-    nextBlock = GetRandomBlock();
-    score = 0;
-    speed = 0.3;
-    level = 1;
-}
-
 void Game::UpdateScore(int linesCleared, int moveDownPoints)
 {
     switch(linesCleared)
@@ -225,5 +230,28 @@ void Game::UpdateLevel(int score, int &level)
     {
         level++;
         speed = speed / (level*0.25);
+        //speed = speed - 0.1*level;
+        //level 1: speed is 0.3
+        //level 2: speed = 0.3/(0.5) = 0.6
+        //level 3: speed = 0.6/0.75 = 
     }
+}
+
+// void Game::HoldBlock(Block heldBlock)
+// {
+//     Block temp = currentBlock;
+//     currentBlock = heldBlock;
+//     heldBlock = temp;
+// }
+
+void Game::Reset()
+{
+    grid.Initialize(); //this method clears and resets all cells to 0
+    blocks = GetAllBlocks();
+    currentBlock = GetRandomBlock();
+    nextBlock = GetRandomBlock();
+    // heldBlock = GetRandomBlock();
+    score = 0;
+    speed = 0.3;
+    level = 1;
 }
