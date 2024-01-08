@@ -2,6 +2,7 @@
 #include <random>
 #include <unordered_map>
 using namespace std;
+#include <iostream>
 
 Game::Game()
 {
@@ -9,7 +10,7 @@ Game::Game()
     blocks = GetAllBlocks();
     currentBlock = GetRandomBlock();
     nextBlock = GetRandomBlock();
-    // heldBlock = GetRandomBlock();
+    isBlockHeld = false;
     gameOver = false;
     score = 0;
     InitAudioDevice(); //sets up audio system
@@ -59,7 +60,7 @@ void Game::Draw()
             nextBlock.Draw(270, 245);
             break;
     }
-    // heldBlock.Draw(270, 350);
+    heldBlock.Draw(270, 350);
     // switch(heldBlock.id){
     //     case 3: //I block
     //         heldBlock.Draw(255, 465);
@@ -96,9 +97,9 @@ void Game::HandleInput()
     case KEY_UP:
         RotateBlock();
         break;
-    // case KEY_C:
-    //     HoldBlock(heldBlock);
-    //     break;
+    case KEY_C:
+        HoldBlock(isBlockHeld);
+        break;
     }
 }
 
@@ -237,21 +238,40 @@ void Game::UpdateLevel(int score, int &level)
     }
 }
 
-// void Game::HoldBlock(Block heldBlock)
-// {
-//     Block temp = currentBlock;
-//     currentBlock = heldBlock;
-//     heldBlock = temp;
-// }
-
 void Game::Reset()
 {
     grid.Initialize(); //this method clears and resets all cells to 0
     blocks = GetAllBlocks();
     currentBlock = GetRandomBlock();
     nextBlock = GetRandomBlock();
-    // heldBlock = GetRandomBlock();
+    isBlockHeld = false;
     score = 0;
     speed = 0.3;
     level = 1;
+}
+
+void Game::HoldBlock(bool &isBlockHeld)
+{
+    if(!isBlockHeld)
+    {
+        Block temp = Block();
+        temp = currentBlock;
+
+        currentBlock = nextBlock;
+        nextBlock = GetRandomBlock();
+        heldBlock = temp;
+        
+        isBlockHeld = true;
+        cout << "case 1";
+    }
+    else
+    {
+        Block temp = Block();
+        temp = currentBlock;
+
+        currentBlock = heldBlock;
+        heldBlock = temp;
+        currentBlock.Draw(11, 11);
+        cout << "case 2";
+    }
 }

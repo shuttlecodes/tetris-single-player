@@ -10,9 +10,9 @@ Press F5 on the keyboard to compile and run the program.
 - scoring: based on number of cleared lines and when down key is pressed
 - next block UI: display the next block
 - sound effects: for rotating blocks and clearing lines
+- hold: when clicking the c key, hold a block for later retrieval
 
 upcoming features:
-- hold: when clicking the s key, hold a block for later retrieval
 - spacebar down: when clicking the spacebar, move the current block all the way down
 
 # demo

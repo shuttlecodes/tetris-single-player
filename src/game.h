@@ -27,12 +27,13 @@ private:
     void Reset();
     void UpdateScore(int linesCleared, int moveDownPoints);
     void UpdateLevel(int score, int &level);
-    // void HoldBlock(Block heldBlock);
+    void HoldBlock(bool &isBlockHeld);
     Grid grid;
     vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
-    // Block heldBlock;
+    Block heldBlock;
+    bool isBlockHeld;
     Sound rotateSound;
     Sound clearSound;
 };
