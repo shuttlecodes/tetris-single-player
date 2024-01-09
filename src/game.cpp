@@ -60,18 +60,17 @@ void Game::Draw()
             nextBlock.Draw(270, 245);
             break;
     }
-    heldBlock.Draw(270, 350);
-    // switch(heldBlock.id){
-    //     case 3: //I block
-    //         heldBlock.Draw(255, 465);
-    //         break;
-    //     case 4: //O block
-    //         heldBlock.Draw(255, 455);
-    //         break;
-    //     default:
-    //         heldBlock.Draw(270, 445);
-    //         break;
-    // }
+    switch(heldBlock.id){
+        case 3: //I block
+            heldBlock.Draw(255, 430);
+            break;
+        case 4: //O block
+            heldBlock.Draw(255, 420);
+            break;
+        default:
+            heldBlock.Draw(270, 410);
+            break;
+    }
 }
 
 void Game::HandleInput()
@@ -231,10 +230,6 @@ void Game::UpdateLevel(int score, int &level)
     {
         level++;
         speed = speed / (level*0.25);
-        //speed = speed - 0.1*level;
-        //level 1: speed is 0.3
-        //level 2: speed = 0.3/(0.5) = 0.6
-        //level 3: speed = 0.6/0.75 = 
     }
 }
 
@@ -262,7 +257,6 @@ void Game::HoldBlock(bool &isBlockHeld)
         heldBlock = temp;
         
         isBlockHeld = true;
-        cout << "case 1";
     }
     else
     {
@@ -272,6 +266,5 @@ void Game::HoldBlock(bool &isBlockHeld)
         currentBlock = heldBlock;
         heldBlock = temp;
         currentBlock.Draw(11, 11);
-        cout << "case 2";
     }
 }

@@ -61,7 +61,7 @@ int main()
 
         if(game.gameOver)
         {
-            DrawTextEx(font, "WOMP WOMP", {330, 565}, 30, 2, WHITE);
+            DrawTextEx(font, "GAME OVER", {330, 565}, 30, 2, WHITE);
         }
 
         game.Draw();
